@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Match Evaluation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .athlete-card {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .athlete-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .athlete-info {
+            text-align: left;
+        }
+        .athlete-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .relatability {
+            font-size: 1em;
+            color: #888;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Athlete Matches</h1>
+        <input list="athletes" id="athleteInput" placeholder="Type or select an athlete...">
+        <datalist id="athletes">
+            <!-- Options are dynamically populated -->
+        </datalist>
+        <button onclick="showAthleteInfo()">Show Info</button>
+        <div id="athleteDisplay" class="athlete-card" style="display: none;">
+            <img src="" alt="Athlete Image" class="athlete-image">
+            <div class="athlete-info">
+                <div class="athlete-name"></div>
+                <div class="relatability"></div>
+                <ul class="shared-characteristics"></ul> <!-- List for shared characteristics -->
+            </div>
+        </div>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        const athletes = JSON.parse(localStorage.getItem('athletesData')) || {};
+        const userData = JSON.parse(localStorage.getItem('userData'));
+    
+        function calculateRelatability(athleteData) {
+            let score = 0;
+            let sharedCharacteristics = [];
+            const pointsPerMatch = 100 / 6;  // Divide 100 points by the number of criteria
+
+            if (userData.favorite_food.toLowerCase() === athleteData.favorite_food.toLowerCase()) {
+                score += pointsPerMatch;
+                sharedCharacteristics.push(`Favorite food: ${athleteData.favorite_food}`);
+            }
+            if (userData.favorite_number === athleteData.favorite_number) {
+                score += pointsPerMatch;
+                sharedCharacteristics.push(`Favorite number: ${athleteData.favorite_number}`);
+            }
+            if (userData.favorite_vacation.toLowerCase() === athleteData.favorite_vacation.toLowerCase()) {
+                score += pointsPerMatch;
+                sharedCharacteristics.push(`Favorite vacation: ${athleteData.favorite_vacation}`);
+            }
+            if (userData.favorite_drink.toLowerCase() === athleteData.favorite_drink.toLowerCase()) {
+                score += pointsPerMatch;
+                sharedCharacteristics.push(`Favorite drink: ${athleteData.favorite_drink}`);
+            }
+            if (Math.abs(userData.height - athleteData.height) <= 5) {
+                score += pointsPerMatch;
+                sharedCharacteristics.push(`Height within 5 cm: ${athleteData.height} cm`);
+            }
+            if (Math.abs(userData.weight - athleteData.weight) <= 5) {
+                score += pointsPerMatch;
+                sharedCharacteristics.push(`Weight within 5 kg: ${athleteData.weight} kg`);
+            }
+
+            // Ensure the score does not exceed 100 due to rounding issues
+            score = Math.min(score, 100);
+
+            score = parseFloat(score.toFixed(1));
+
+            return { score, sharedCharacteristics };
+        }
+
+    
+        window.onload = function() {
+            const dataList = document.getElementById('athletes');
+            Object.keys(athletes).forEach(key => {
+                const athlete = athletes[key];
+                const { score } = calculateRelatability(athlete);
+                if (score > 0) {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    dataList.appendChild(option);
+                }
+            });
+        };
+    
+        function showAthleteInfo() {
+            const athleteName = document.getElementById('athleteInput').value;
+            const athlete = athletes[athleteName];
+            if (athlete) {
+                const { score, sharedCharacteristics } = calculateRelatability(athlete);
+                document.getElementById('athleteDisplay').style.display = 'flex';
+                document.querySelector('.athlete-image').src = athlete.image_url;
+                document.querySelector('.athlete-image').alt = athleteName;
+                document.querySelector('.athlete-name').textContent = athleteName;
+                document.querySelector('.relatability').textContent = `Relatability: ${score}%`;
+                const characteristicsList = document.querySelector('.shared-characteristics');
+                characteristicsList.innerHTML = sharedCharacteristics.map(item => `<li>${item}</li>`).join('');
+            } else {
+                alert('Please select a valid athlete from the list.');
+            }
+        }
+    
+        function goBack() {
+            window.history.back();
+        }
+    </script>    
+</body>
+</html>

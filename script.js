@@ -64,6 +64,7 @@ const athletes = {
     "Joel Embiid": { sport: "Basketball", height: 213, weight: 127, favorite_food: "Steak", favorite_drink: "Water", favorite_vacation: "Cameroon", favorite_number: 21, post_workout_meal: "Grilled chicken", workout_music: "Hip-hop", relaxation_method: "Playing video games", image_url: "images/Joel.png" }  
 };
 
+
 document.getElementById("submitBtn").addEventListener("click", async function() {
     const loadingScreen = document.getElementById("loadingScreen");
     loadingScreen.style.display = "flex"; // Show loading screen
@@ -71,11 +72,16 @@ document.getElementById("submitBtn").addEventListener("click", async function() 
     const userAnswers = {
         height: document.getElementById("height").value,
         weight: document.getElementById("weight").value,
-        favorite_food: document.getElementById("food").value,
-        favorite_drink: document.getElementById("drink").value,
-        favorite_vacation: document.getElementById("vacation").value,
+        favorite_food: document.getElementById("food").value.toLowerCase(),
+        favorite_drink: document.getElementById("drink").value.toLowerCase(),
+        favorite_vacation: document.getElementById("vacation").value.toLowerCase(),
         favorite_number: document.getElementById("number").value
     };
+
+     // Save user data to localStorage
+     localStorage.setItem('userData', JSON.stringify(userAnswers));
+     // Save athletes data to localStorage
+     localStorage.setItem('athletesData', JSON.stringify(athletes));
 
     const { bestMatch, sharedCharacteristics } = matchAthlete(userAnswers);
     const athleteSummary = await getAthleteSummary(bestMatch); // Fetch summary from Kindo
@@ -84,6 +90,8 @@ document.getElementById("submitBtn").addEventListener("click", async function() 
     setTimeout(() => {
         loadingScreen.style.display = "none"; // Hide loading screen after processing
     }, 1500); // Simulate a 1.5-second processing time
+
+    document.getElementById('nextBtn').style.display = 'block'; // Show the next button after the summary is displayed
 });
 
 function matchAthlete(answers) {
@@ -134,9 +142,13 @@ function matchAthlete(answers) {
             sharedCharacteristics = currentShared;
         }
     }
-
+    
     return { bestMatch, sharedCharacteristics };
 }
+
+document.getElementById('nextBtn').addEventListener('click', function() {
+    window.location.href = 'evaluate.html'; // Redirect to the next page
+});
 
 async function getAthleteSummary(athlete) {
     const prompt = `Generate a brief summary of ${athlete}, a famous ${athletes[athlete].sport} athlete. They love ${athletes[athlete].favorite_food}, vacation in ${athletes[athlete].favorite_vacation}, and their favorite number is ${athletes[athlete].favorite_number}. Focus on key personality traits.`;
