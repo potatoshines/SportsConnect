@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Athlete Match</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
+<div class="container">
+    <h1>Find Your Athlete Match!</h1>
+    <p>Answer a few quick questions and we'll match you with an athlete who shares your interests!</p>
+
+    <form id="quizForm">
+        <div class="question">
+            <label for="height">What is your height in cm?</label>
+            <input type="text" id="height" name="height" required>
+        </div>
+
+        <div class="question">
+            <label for="weight">What is your weight in kg?</label>
+            <input type="text" id="weight" name="weight" required>
+        </div>
+
+        <div class="question">
+            <label for="food">What's your favorite food?</label>
+            <input type="text" id="food" name="food" required>
+        </div>
+
+        <div class="question">
+            <label for="drink">What's your favorite drink?</label>
+            <input type="text" id="drink" name="drink" required>
+        </div>
+
+        <div class="question">
+            <label for="vacation">What's your favorite vacation spot?</label>
+            <input type="text" id="vacation" name="vacation" required>
+        </div>
+
+        <div class="question">
+            <label for="number">What's your favorite number?</label>
+            <input type="text" id="number" name="number" required>
+        </div>
+
+        <button type="button" id="submitBtn">Find My Athlete</button>
+    </form>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script src="realScript.js"></script>
+
+</body>
+</html>
