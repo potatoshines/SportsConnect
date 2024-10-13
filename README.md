@@ -20,3 +20,5 @@ By using **SportsConnect**, users will not only learn more about athletes and th
 - More diverse and fun questions.
 - Inclusion of fun facts, short videos, or gifs of athlete highlights.
 - Utilizing AI and LLMs for a more dynamic and interactive structure to increase user engagement.
+
+Contributed by Shin Aung, Sevan Meroian, Izaac Haro, and Jordan Miller
