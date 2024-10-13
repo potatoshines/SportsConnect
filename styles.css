@@ -1,177 +1,106 @@
 /* General Body Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e9ecef; /* Light grey for a softer background */
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    background: linear-gradient(120deg, #d4e9ff, #f0f3f5); /* A sporty gradient for the background */
     margin: 0;
     padding: 0;
-    overflow-y: scroll;
+    color: #333; /* Dark text for readability */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Center everything vertically */
 }
 
 /* Container Styles */
 .container {
-    max-width: 800px;
-    margin: 40px auto; /* Increased margin for top spacing */
-    padding: 20px;
-    background-color: #ffffff; /* Pure white for clarity */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Softer shadow for elegance */
-    border-radius: 8px; /* Slightly reduced border radius */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for lift effect */
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    border-top: 5px solid #ff5733;
+    backdrop-filter: blur(15px);
+    text-align: center; /* Center text */
 }
-
-/* Lift Effect on Hover */
-.container:hover {
-    transform: translateY(-5px); /* Move up slightly */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Increase shadow for depth */
-}
-
 
 /* Headings */
 h1 {
-    text-align: center;
-    color: #343a40; /* Dark grey for text */
-    font-size: 2.5rem; /* Larger font for emphasis */
-    margin-bottom: 20px; /* Increased margin for spacing */
-    font-weight: 600; /* Slightly bolder font weight */
+    font-size: 3rem; /* Reduced font size for the title */
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #004aad, #ff5733);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Paragraph Styles */
 p {
-    text-align: center;
-    color: #6c757d; /* Muted grey for subtler text */
-    margin-bottom: 30px;
-    font-size: 1.1rem; /* Slightly increased font size */
-    line-height: 1.6; /* Improved line height for readability */
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    line-height: 1.8;
 }
 
-/* Question Section Styles */
+/* Form Section */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .question {
-    margin-bottom: 25px; /* Increased margin for better spacing */
+    margin-bottom: 20px;
+    width: 100%; /* Ensures inputs are full width */
+    text-align: left;
 }
 
 .question label {
-    display: block;
-    margin-bottom: 8px; /* Space between label and input */
-    font-size: 1.1rem; /* Consistent label font size */
-    color: #495057; /* Darker grey for readability */
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #004aad;
+    font-weight: 600;
 }
 
 .question input {
     width: 100%;
-    padding: 12px; /* Increased padding for touch targets */
-    font-size: 1rem;
-    border: 1px solid #ced4da; /* Light border for subtlety */
-    border-radius: 4px; /* More streamlined radius */
-    box-sizing: border-box;
-    margin-bottom: 12px; /* Increased bottom margin */
-    transition: border-color 0.3s ease; /* Smooth transition on focus */
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid rgba(0, 74, 173, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .question input:focus {
-    border-color: #007bff; /* Bootstrap blue for focus effect */
-    outline: none; /* Remove default outline */
+    border-color: #004aad;
+    box-shadow: 0 0 12px rgba(0, 74, 173, 0.4);
+    outline: none;
 }
 
 /* Button Styles */
 button {
     display: block;
     width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
+    padding: 16px;
+    font-size: 1.5rem;
     color: white;
-    background-color: #007bff; /* Bootstrap blue */
+    background: linear-gradient(90deg, #ff5733, #ff8f00);
     border: none;
-    border-radius: 4px; /* Consistent radius */
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s; /* Transition effects */
-    font-weight: 500; /* Slightly bolder font weight */
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.02); /* Slight scale on hover */
-}
-
-/* Result Section Styles */
-.result {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f8f9fa; /* Light grey for results */
-    border-radius: 4px; /* Consistent radius */
-    font-size: 1.1rem;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Athlete Information Styles */
-.athlete-container {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    padding: 15px; /* Added padding for spacing */
-    background-color: #ffffff; /* White background for clarity */
-    border-radius: 4px; /* Rounded edges */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.athlete-image {
-    width: 150px;
-    height: auto;
-    margin-right: 20px; /* Space between image and text */
-    border-radius: 8px; /* Rounded edges */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.athlete-info {
-    max-width: 600px; /* Maintain a maximum width */
-}
-
-/* Athlete Name Styles */
-.athlete-name {
-    font-weight: bold;
-    font-size: 1.5rem; /* Larger font for athlete name */
-    color: #343a40; /* Dark grey for text */
-}
-
-/* List Styles */
-.athlete-info ul {
-    margin-top: 10px; /* Space above list */
-    padding-left: 20px; /* Indentation for list */
-}
-
-/* Relation Styles */
-.relation {
-    font-weight: bold; /* Emphasize relationship text */
-    color: #007bff; /* Use primary color for visibility */
-}
-
-/* Summary Styles */
-.summary {
-    color: #000000; /* Black for summary text */
-    text-align: left; /* Left align text */
-    padding: 15px; /* Increased padding for spacing */
-    margin: 15px 0; /* Margin above and below */
-    font-size: 1.0em; /* Slightly larger font size */
-    line-height: 1.6; /* Increased line height for readability */
-    background-color: #f8f9fa; /* Light background color */
-    border-left: 2px solid #6c757d; /* Left border for emphasis */
-    border-radius: 5px; /* Slightly rounded corners */
-}
-
-/* Loading Spinner Styles */
-.spinner {
-    display: none; /* Hidden by default */
-    margin: 20px auto; /* Center the spinner */
-    width: 50px;
-    height: 50px;
-    border: 6px solid #ced4da; /* Light grey for border */
-    border-top-color: #007bff; /* Bootstrap blue for top */
-    border-radius: 50%; /* Circular spinner */
-    animation: spin 1s linear infinite; /* Spin animation */
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg); /* Spin effect */
-    }
+    background: linear-gradient(90deg, #e64e00, #ff7500);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* Loading Screen Styles */
@@ -181,12 +110,83 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay for loading */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem; /* Larger font for visibility */
+    font-size: 2rem;
     z-index: 1000;
-    display: none; /* Hidden by default */
+    display: none;
+}
+
+.loading-screen.active {
+    display: flex;
+}
+
+/* Loading Spinner Styles */
+.spinner {
+    width: 90px;
+    height: 90px;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ff5733;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+    box-shadow: 0 4px 12px rgba(255, 87, 51, 0.3);
+    margin-bottom: 20px; /* Add space between spinner and text */
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Result Section */
+.result {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    font-size: 1.2rem; /* Slightly smaller font size for the summary */
+    text-align: left; /* Align the summary to the left */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Bullet points for common traits */
+.athlete-info ul {
+    margin-top: 10px;
+    padding-left: 20px; /* Add padding to align bullet points */
+    list-style-type: disc;
+    font-size: 1.1rem;
+    text-align: left; /* Left align bullet points */
+}
+
+.relation {
+    font-weight: bold;
+    color: #ff5733;
+}
+
+.summary {
+    color: #444;
+    text-align: left; /* Align summary text to the left */
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 1.1rem; /* Slightly smaller font size */
+    line-height: 1.7;
+    background-color: #f0f3f5;
+    border-left: 5px solid #ff5733;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Athlete Image Styles */
+.athlete-image {
+    width: 180px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 20px auto; /* Center the image */
+    display: block; /* Ensures image is a block element for centering */
 }
