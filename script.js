@@ -110,32 +110,38 @@ function matchAthlete(answers) {
         let score = 0;
         let currentShared = [];
 
+        // Compare height
         if (Math.abs(parseInt(answers.height) - traits.height) <= 5) {
             score++;
-            currentShared.push(`<span class="relation">height</span>`);
+            currentShared.push(`Height: ${traits.height} cm`);
         }
+        // Compare weight
         if (Math.abs(parseInt(answers.weight) - traits.weight) <= 5) {
             score++;
-            currentShared.push(`<span class="relation">weight</span>`);
+            currentShared.push(`Weight: ${traits.weight} kg`);
         }
-
+        // Compare favorite food
         if (traits.favorite_food.toLowerCase().includes(answers.favorite_food.toLowerCase())) {
             score++;
-            currentShared.push(`<span class="relation">favorite food</span>`);
+            currentShared.push(`Favorite Food: ${traits.favorite_food}`);
         }
+        // Compare favorite drink
         if (traits.favorite_drink.toLowerCase().includes(answers.favorite_drink.toLowerCase())) {
             score++;
-            currentShared.push(`<span class="relation">favorite drink</span>`);
+            currentShared.push(`Favorite Drink: ${traits.favorite_drink}`);
         }
+        // Compare favorite vacation spot
         if (traits.favorite_vacation.toLowerCase().includes(answers.favorite_vacation.toLowerCase())) {
             score++;
-            currentShared.push(`<span class="relation">favorite vacation</span>`);
+            currentShared.push(`Favorite Vacation Spot: ${traits.favorite_vacation}`);
         }
+        // Compare favorite number
         if (parseInt(answers.favorite_number) === traits.favorite_number) {
             score++;
-            currentShared.push(`<span class="relation">favorite number</span>`);
+            currentShared.push(`Favorite Number: ${traits.favorite_number}`);
         }
 
+        // Find best match based on highest score
         if (score > highestScore) {
             highestScore = score;
             bestMatch = name;
@@ -147,8 +153,7 @@ function matchAthlete(answers) {
 }
 
 async function getAthleteSummary(athlete) {
-    const prompt = `Generate a summary of ${athlete}, a famous ${athletes[athlete].sport} athlete. 
-    They are known for their athletic excellence. They love ${athletes[athlete].favorite_food} and vacation in ${athletes[athlete].favorite_vacation}. Their favorite number is ${athletes[athlete].favorite_number}.`;
+    const prompt = `Generate a brief summary of ${athlete}, a famous ${athletes[athlete].sport} athlete. They love ${athletes[athlete].favorite_food}, vacation in ${athletes[athlete].favorite_vacation}, and their favorite number is ${athletes[athlete].favorite_number}. Focus on key personality traits.`;
 
     try {
         const response = await fetch("https://llm.kindo.ai/v1/chat/completions", {
@@ -204,4 +209,3 @@ function displayResult(athlete, sharedCharacteristics, summary) {
 
     resultDiv.innerHTML = message;
 }
-
