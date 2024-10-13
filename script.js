@@ -195,4 +195,3 @@ function displayResult(athlete, sharedCharacteristics, summary) {
 
     resultDiv.innerHTML = message;
 }
-
