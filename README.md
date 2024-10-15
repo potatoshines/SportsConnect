@@ -21,4 +21,8 @@ By using **SportsConnect**, users will not only learn more about athletes and th
 - Inclusion of fun facts, short videos, or gifs of athlete highlights.
 - Utilizing AI and LLMs for a more dynamic and interactive structure to increase user engagement.
 
-Contributed by Shin Aung, Sevan Meroian, Izaac Haro, and Jordan Miller
+## Credits
+Huge thanks to AI LA for having us in this amazing opportunity, Celebral Beach Hacks, alongside sponsors and mentors for the event, especially KindoAI and WhiteRabbitNeo, which provided unlimited help to make this come true.
+
+This project was contributed by Shin Aung, Sevan Meroian, Izaac Haro, Jordan Miller, and Jake Pong.
+Note: Due to technical issues, this project was created in a new repository (transferred from the old one) and does not accurately reflect the full contribution history of the creators.
