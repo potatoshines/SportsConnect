@@ -1,4 +1,4 @@
-const KINDO_API_KEY = "be2ea50d-9b6d-4157-b60e-a21e6b3fd74e-246730fe85cd8c6a"; // Your Kindo API key
+const KINDO_API_KEY = "INSERT_YOUR_KINDO_API_KEY_HERE"; // Your Kindo API key
 
 const athletes = {
     "LeBron James": { sport: "Basketball", height: 203, weight: 113, favorite_food: "Tacos", favorite_drink: "Wine", favorite_vacation: "Italy", favorite_number: 23, post_workout_meal: "Grilled chicken", workout_music: "Hip-hop", relaxation_method: "Watching movies", image_url: "images/LeBron.png"},
